@@ -6,6 +6,8 @@ import Login from './pages/Login';
 import Signup from "./pages/Signup";
 import ResetPassword from "./pages/ResetPassword";
 import BlogFeed from "./pages/BlogFeed";
+import MyPosts from './pages/MyPosts';
+import PostForm from './components/PostForm';
 import { AuthProvider } from "./context/AuthContext";
 import './index.css';
 
@@ -19,6 +21,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/login" element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/signup" element={<Signup />} />
+
+          {/* Dashboard (Protected) routes */}
+          <Route path="/dashboard/my-posts" element={<MyPosts />} />
+          <Route path="dashboard/create-post" element={<PostForm isEdit={false} />} />
+          <Route path="dashboard/edit-post/:id" element={<PostForm isEdit={true} />} />
         </Routes>
       </Router>
     </AuthProvider>   
