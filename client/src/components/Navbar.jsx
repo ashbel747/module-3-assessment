@@ -1,7 +1,6 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import { FaBars, FaUser, FaSun, FaMoon } from "react-icons/fa";
+import { useAuth } from '../context/AuthContext';
 import { Link } from "react-router-dom"; // Keep this if using React Router
 
 export default function Navbar() {
@@ -141,15 +140,19 @@ export default function Navbar() {
               <FaUser className="w-4 h-4" />
             </button>
 
-            {/* Login Button */}
-            <button
-              onClick={handleLogin}
-              className={`px-6 py-2 rounded-md text-sm font-medium ${
-                isDarkMode ? "bg-blue-700 text-white hover:bg-blue-600" : "bg-blue-600 text-white hover:bg-blue-700"
-              }`}
+            <Link
+              to="/login"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
             >
-              LOGIN
-            </button>
+              Login
+            </Link>
+
+            <Link
+              to="/signup"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Sign Up
+            </Link>
 
             {/* Mobile Menu */}
             <button
