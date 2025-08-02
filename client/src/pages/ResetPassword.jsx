@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FaKey } from 'react-icons/fa'
+import { FaKey } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const ResetPassword = () => {
   const [email, setEmail] = useState('');
@@ -8,6 +9,26 @@ const ResetPassword = () => {
 
   const handleReset = async (e) => {
     e.preventDefault();
+
+    try {
+      const res = await fetch('http://localhost:3500/api/auth/reset-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password: newPassword }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Reset failed');
+      }
+
+      setMessage('Password successfully reset.');
+    } catch (err) {
+      setMessage(err.message || 'Failed to reset password.');
+    }
   };
 
   return (
@@ -48,7 +69,7 @@ const ResetPassword = () => {
             type="submit"
             className="bg-blue-800 hover:bg-blue-400 active:bg-blue-600 text-white font-bold py-2 px-4 w-full rounded"
           >
-            Reset Password
+            CONFIRM
           </button>
 
           {message && (
@@ -56,6 +77,12 @@ const ResetPassword = () => {
               {message}
             </p>
           )}
+
+          <div className='mt-4 text-center'>
+            <Link to="/login" className="text-sm text-gray-900 hover:underline">
+              Return back to Login Page
+            </Link>
+          </div>
         </form>
       </div>
     </div>

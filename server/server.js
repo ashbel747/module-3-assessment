@@ -17,8 +17,13 @@ app.use(cors({
   credentials: true,
 }));
 
+
+
 //  Middleware
 app.use(express.json());
+
+//  Routes
+app.use('/api/auth', require('./routes/authRoutes'));
 
 // Start server
 mongoose.connection.once('open', () => {
