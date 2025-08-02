@@ -1,19 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const mongoose = require('mongoose');
-const connectDB = require('./config/db')
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3500;
 
-//db connection
-connectDB();
-
-// ✅ Enable CORS for frontend origin
+// Enable CORS for frontend
 app.use(cors({
-  origin: 'http://localhost:5173', // your frontend URL
+  origin: 'http://localhost:5173',
   credentials: true,
 }));
 
