@@ -2,6 +2,78 @@ const Post = require('../model/Post');
 const User = require('../model/userModel');
 const mongoose = require('mongoose');
 
+// @desc    Create a new post
+// @route   POST /api/posts
+// @access  Private
+const createPost = async (req, res) => {
+  try {
+    const { title, summary, content, image } = req.body;
+    const userId = req.user.id;
+
+    const newPost = new Post({ title, summary, content, image, author: userId });
+    await newPost.save();
+
+    res.status(201).json(newPost);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to create post' });
+  }
+};
+
+// @desc    Update a post
+// @route   PUT /api/posts/:id
+// @access  Private
+const updatePost = async (req, res) => {
+  try {
+    const { title, content } = req.body;
+    const post = await Post.findById(req.params.id);
+
+    if (!post) return res.status(404).json({ message: 'Post not found' });
+
+    // Check if user is the post owner
+    if (post.author.toString() !== req.user.id) {
+      return res.status(403).json({ message: 'Not authorized to update this post' });
+    }
+
+    post.title = title || post.title;
+    post.content = content || post.content;
+
+    const updatedPost = await post.save();
+    res.json(updatedPost);
+  } catch (err) {
+    console.error('UPDATE POST ERROR:', err);
+    res.status(500).json({ message: 'Failed to update post' });
+  }
+};
+
+
+// @desc    Delete a post
+// @route   DELETE /api/posts/:id
+// @access  Private
+const deletePost = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const post = await Post.findById(id);
+
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    // Check if the logged-in user is the owner
+    if (post.author.toString() !== req.user.id) {
+      return res.status(403).json({ message: 'Not authorized to delete this post' });
+    }
+
+    await post.deleteOne();
+    res.status(200).json({ message: 'Post deleted successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to delete post' });
+  }
+};
+
+
+
 // @desc    Get all posts 
 // @route   GET /api/posts
 // @access  Public
@@ -48,5 +120,8 @@ const getPosts = async (req, res) => {
 };
 
 module.exports = {
+  createPost,
+  updatePost,
+  deletePost,
   getPosts
 };
