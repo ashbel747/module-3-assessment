@@ -2,7 +2,7 @@ from crewai.tools import BaseTool
 from typing import Type, Any
 from pydantic import BaseModel, Field
 
-from rag_system.rag_utils import setup_rag_pipeline, get_context_from_query
+from rag_utils import setup_rag_pipeline, get_context_from_query
 
 db = setup_rag_pipeline()
 
