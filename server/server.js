@@ -15,7 +15,7 @@ connectDB();
 
 const allowedOrigins = [
   'http://localhost:5173',              // Local dev
-  'https://inkspir.netlify.app/', // Netlify site URL
+  'https://inkspir.netlify.app', // Netlify site URL
 ];
 
 // Enable CORS for frontend

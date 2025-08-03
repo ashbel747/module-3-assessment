@@ -5,6 +5,7 @@ import SignUp from './pages/Signup';
 import BlogFeed from './pages/BlogFeed';
 import Accessibility from './components/Accesibility-section';
 import ChatbotButton from './components/ChatbotButton';
+import Footer from './components/Footer';
 import { useSidebar } from './context/SidebarContext';
 import { Outlet } from 'react-router-dom';
 
@@ -12,7 +13,7 @@ function App() {
   const { isSidebarOpen } = useSidebar();
 
   return (
-    <div>
+    <div className='overflow-hidden'>
       <Sidebar />
       <div className="flex-1 min-h-screen">
         <Navbar />
@@ -22,6 +23,7 @@ function App() {
           <SignUp />
           <BlogFeed />
           <Accessibility />
+          <Footer />
         </main>
       </div>
       <ChatbotButton />

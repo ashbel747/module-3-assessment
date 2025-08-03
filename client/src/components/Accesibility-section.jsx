@@ -25,7 +25,7 @@ export default function Accessibility() {
                     Ultimately, accessible design is  human centered design. It<br/> challenges us to think beyond edge cases and embrace the full<br/> spectrum of user needs. By designing for inclusion, we create<br/> products that are more resilient, adaptable, and future proof.<br/> Accessibility isn't just about doing<br/> the right thing; it's about doing things right. And when we get<br/> it right, we build digital spaces where everyone belongs.
                 </p>
             </div>
-            <div className="border-blue-600 border-2 mt-5 mr-16">
+            <div className="border-blue-600 w-full  border-2 mt-5 mr-16">
                 <p className="mb-6 ml-2">Publication Date<br/><span className="text-blue-400">4/7/2025</span></p>
                 <p className="mb-6 ml-2">Category<br/><span className="text-blue-400">Design</span></p>
                 <p className="mb-6 ml-2">Reading time<br/><span className="text-blue-400">2 Hours</span></p>
