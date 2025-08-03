@@ -31,6 +31,12 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/posts', require('./routes/postRoutes'));
 
+
+app.get('/', (req, res) => {
+  res.send('API is running ✅');
+});
+
+
 // Start server
 mongoose.connection.once('open', () => {
     app.listen(PORT, ()=> console.log(`Server running on port ${PORT}`));
