@@ -1,11 +1,14 @@
 import { useSidebar } from '../context/SidebarContext';
 import { useAuth } from '../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 const Sidebar = () => {
   const { isSidebarOpen, toggleSidebar } = useSidebar();
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, logout } = useAuth();
+
+  const navigate = useNavigate();
+  
   
   // Light/Dark mode state
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -37,7 +40,9 @@ const Sidebar = () => {
   };
 
   const handleLogout = () => {
-    // Add your logout logic here
+    logout();
+    navigate("/");
+
     toggleSidebar();
   };
 
