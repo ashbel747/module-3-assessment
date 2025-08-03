@@ -56,7 +56,7 @@ const Login = () => {
                         <input 
                             placeholder='name@gmail.com'
                             type="email" 
-                            className='border-none rounded w-full py-3 px-6 text-gray-600 dark:text-white bg-gray-200 dark:bg-gray-50'
+                            className='border-none rounded w-full py-3 px-6 text-gray-600 bg-gray-200 dark:bg-gray-50'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required 
@@ -70,7 +70,7 @@ const Login = () => {
                         <input 
                             placeholder='Password'
                             type='password'
-                            className='border-none rounded w-full py-3 px-6 text-gray-600 dark:text-white bg-gray-200 dark:bg-gray-50'
+                            className='border-none rounded w-full py-3 px-6 text-gray-600 bg-gray-200 dark:bg-gray-50'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
