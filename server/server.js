@@ -30,7 +30,6 @@ app.use(express.json());
 //  Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/posts', require('./routes/postRoutes'));
-app.use('/api/chatbot', require('./routes/chatbotRoutes')); // ONLY THIS LINE ADDED
 
 // Start server
 mongoose.connection.once('open', () => {
