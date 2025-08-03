@@ -36,26 +36,16 @@ export default function Navbar() {
     }
   };
 
-  //Sticky Navigation
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50); // Adjust threshold as needed
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate("/");
   }
 
   return (
     <>
       <Sidebar />
-      <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-lg" : "bg-white shadow-sm"} dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700`}>
-        <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <header className='sticky top-0 z-50 bg-amber-600'>
+        <nav className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3 text-gray-800 dark:text-white">
           
           {/* Left side: Logo + Navigation Links */}
           <div className="flex items-center space-x-8">

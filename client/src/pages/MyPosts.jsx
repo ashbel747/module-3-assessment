@@ -59,7 +59,7 @@ export default function MyPosts() {
       <div className="flex justify-between items-center mb-12">
         <h1 className="text-3xl font-bold mb-4">My Posts</h1>
         <Link
-          to={`/dashboard/create-post`}
+          to={`/create-post`}
           className="bg-blue-800 hover:bg-blue-400 active:bg-blue-600 text-white font-bold py-2 px-4 rounded ml-auto"
         >
           New Post
@@ -92,7 +92,7 @@ export default function MyPosts() {
 
               <div className="flex gap-4">
                 <button
-                  onClick={() => navigate(`/dashboard/edit-post/${post._id}`)}
+                  onClick={() => navigate(`/edit-post/${post._id}`)}
                   className="text-blue-500 px-4 py-1 hover:underline"
                 >
                   Edit
