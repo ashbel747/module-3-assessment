@@ -47,7 +47,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={`fixed top-0 left-0 h-full w-64 bg-blue-600 dark:bg-gray-800 text-white z-50 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 flex flex-col`}>
+    <div className={`fixed top-0 left-0 h-full w-64 sm:w-12 md:w-64 bg-blue-600 dark:bg-gray-800 text-white z-50 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 flex flex-col`}>
       {/* Sidebar header */}
       <div className="p-4 flex justify-between items-center border-b border-blue-500">
         <span className="text-xl font-bold">Menu</span>
@@ -60,13 +60,6 @@ const Sidebar = () => {
 
       {/* Sidebar links */}
       <nav className="flex flex-col px-4 py-6 text-base space-y-2">
-        {/* Dashboard - with darker background (selected) */}
-        <Link to="/dashboard" onClick={toggleSidebar} className="flex items-center gap-3 px-3 py-2 bg-gray-600 bg-opacity-70 rounded-md text-white">
-          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-          </svg>
-          <span className="text-white">Dashboard</span>
-        </Link>
 
         {/* All posts - with darker background (selected) */}
         <Link to="/posts" onClick={toggleSidebar} className="flex items-center gap-3 px-3 py-2 bg-gray-600 bg-opacity-70 rounded-md text-white">
@@ -76,21 +69,33 @@ const Sidebar = () => {
           <span className="text-white">All posts</span>
         </Link>
 
-        {/* My posts - normal blue background */}
-        <Link to="/my-posts" onClick={toggleSidebar} className="flex items-center gap-3 px-3 py-2 hover:bg-blue-500 hover:bg-opacity-50 rounded-md transition-colors duration-200 text-white">
-          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd" />
-          </svg>
-          <span className="text-white">My posts</span>
-        </Link>
+        {isLoggedIn && (
+          <>
+            <Link to="/dashboard" onClick={toggleSidebar} className="flex items-center gap-3 px-3 py-2 bg-gray-600 bg-opacity-70 rounded-md text-white">
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+              </svg>
+              <span className="text-white">Dashboard</span>
+            </Link>
 
-        {/* Create post - normal blue background */}
-        <Link to="/create-post" onClick={toggleSidebar} className="flex items-center gap-3 px-3 py-2 hover:bg-blue-500 hover:bg-opacity-50 rounded-md transition-colors duration-200 text-white">
-          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-          </svg>
-          <span className="text-white">Create post</span>
-        </Link>
+
+            <Link to="/my-posts" onClick={toggleSidebar} className="flex items-center gap-3 px-3 py-2 hover:bg-blue-500 hover:bg-opacity-50 rounded-md transition-colors duration-200 text-white">
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-white">My posts</span>
+            </Link>
+
+
+            <Link to="/create-post" onClick={toggleSidebar} className="flex items-center gap-3 px-3 py-2 hover:bg-blue-500 hover:bg-opacity-50 rounded-md transition-colors duration-200 text-white">
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+              </svg>
+              <span className="text-white">Create post</span>
+            </Link>
+          </>
+        )}
+        
       </nav>
 
       {/* Bottom section */}
@@ -106,13 +111,15 @@ const Sidebar = () => {
             </svg>
             <span className="text-white text-sm">Light Mode</span>
           </div>
+
+          {/* Toggle Switch */}
           <div className="flex items-center gap-1">
-            <div className={`w-6 h-3 rounded-full flex items-center transition-colors duration-200 ${isDarkMode ? 'bg-blue-500 justify-end pr-0.5' : 'bg-green-500 justify-end pr-0.5'}`}>
-              <div className="w-2 h-2 bg-white rounded-full"></div>
+            <div className={`w-8 h-4 rounded-full flex items-center px-0.5 transition-all duration-300 ${isDarkMode ? 'bg-blue-500 justify-end' : 'bg-green-500 justify-start'}`}>
+              <div className="w-3 h-3 bg-white rounded-full transition-all duration-300"></div>
             </div>
-            <span className="text-xs text-white ml-1">ON</span>
           </div>
         </button>
+
 
         {/* Logout Button */}
         <button onClick={handleLogout} className="flex items-center gap-3 px-3 py-2 bg-gray-600 bg-opacity-70 rounded-md hover:bg-blue-500 hover:bg-opacity-50 transition-colors duration-200 w-full">
