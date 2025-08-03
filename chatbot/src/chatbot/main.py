@@ -1,7 +1,7 @@
-#!/usr/bin/env python
 import warnings
 from datetime import datetime
-from .crew import chatbot
+from .crew import Chatbot
+import json
 
 def get_user_inputs():
     print("## INKSPIRE blogging crew")
@@ -20,12 +20,19 @@ def run_crew():
     """
     inputs = get_user_inputs()
 
-    crew_app = chatbot()
+    crew_app = Chatbot()
 
     result = crew_app.crew().kickoff(inputs=inputs)
     
     print("## Social Blogging Crew results:")
     print(result)
+    
+    try:
+        json_result = json.loads(result.raw) 
+        print(json.dumps(json_result, indent=2))
+    except json.JSONDecodeError:
+        print("Crew output was not valid JSON. Printing raw output:")
+        print(result)
     
 if __name__ == '__main__':
     from dotenv import load_dotenv

@@ -49,3 +49,4 @@ metadata_generation_task:
     - social_media_posts: An array of social media posts for different platforms,
       each with platform-specific content and hashtags.
   agent: summarizing_agent
+  output_file: blog_post_metadata.json
