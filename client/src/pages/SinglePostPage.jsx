@@ -62,14 +62,14 @@ export default function PostPage() {
 
       {post.image && (
         <img
-          src={`../assets/${post.image}`}
+          src={new URL(`../assets/${post.image}`, import.meta.url).href}
           alt={post.title}
-          className="w-full rounded mb-4"
+          className="w-full h-48 sm:h-48 md:h-96 object-cover rounded"
         />
       )}
 
       <div className="prose dark:prose-invert mb-6">
-        <p>{post.content}</p>
+        <p  className='pt-2 text-2xl text-gray-700 dark:text-gray-200 line-clamp-3'>{post.content}</p>
       </div>
 
       <hr className="my-6" />
