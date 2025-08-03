@@ -5,8 +5,6 @@ import SignUp from './pages/Signup';
 import BlogFeed from './pages/BlogFeed';
 import Accessibility from './components/Accesibility-section';
 import { useSidebar } from './context/SidebarContext';
-import Signup from './pages/Signup';
-import BlogFeed from './pages/BlogFeed';
 import { Outlet } from 'react-router-dom';
 
 function App() {
