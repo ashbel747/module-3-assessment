@@ -4,8 +4,9 @@ from langchain_community.embeddings.sentence_transformer import SentenceTransfor
 from langchain_community.vectorstores import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-CHROMA_DB_PATH = "chroma_db"
-KNOWLEDGE_BASE_PATH = "knowledge"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+KNOWLEDGE_BASE_PATH = os.path.join(BASE_DIR, "knowledge")
+CHROMA_DB_PATH = os.path.join(BASE_DIR, "chroma_db")
 
 def setup_rag_pipeline():
     """
