@@ -95,4 +95,11 @@ const resetPassword = async (req, res) => {
   }
 };
 
-module.exports = {registerUser, loginUser, resetPassword};
+//@desc Current user
+//@route GET /auth/current
+//@access private
+const currentUser = asyncHandler(async (req, res) => {
+    res.json(req.user);
+});
+
+module.exports = {registerUser, loginUser, resetPassword, currentUser};

@@ -1,106 +1,126 @@
-import React, { useState } from "react";
-import { FaBars, FaUser, FaSun, FaMoon } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSidebar } from '../context/SidebarContext';
+import Sidebar from './Sidebar';
+import { useAuth } from '../context/AuthContext';
+import { Link, useNavigate } from "react-router-dom";
+import { FaRegSun, FaRegMoon, FaBars, FaUserCircle } from "react-icons/fa";
 
-export default function Navbar({ onHamburgerClick, isDarkMode, toggleDarkMode, isSidebarOpen }) {
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Articles", href: "/articles" },
-    { name: "About", href: "/about" },
-  ];
 
-  const handleLogin = () => {
-    console.log("Login button clicked");
-    alert("Login functionality would be implemented here");
+
+export default function Navbar() {
+  /* Toggling sidebar */
+  const { toggleSidebar } = useSidebar();
+
+  const { isLoggedIn, logout } = useAuth();
+  const navigate = useNavigate();
+
+  //Setting theme mode states
+  const [darkMode, setDarkMode] = useState(false);
+
+  //Getting the saved theme from the local storage and setting it
+  useEffect(() => {
+    const theme = localStorage.getItem('currentTheme');
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      setDarkMode(true);
+    }
+  }, []);
+
+  //Theme toggle logic
+  const toggleTheme = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    if (newMode) {
+      document.documentElement.classList.add('dark');//Toggling the dark class
+      localStorage.setItem('currentTheme', 'dark');//Saving it to local storage
+    } else {
+      document.documentElement.classList.remove('dark');//Toggling the dark class
+      localStorage.setItem('currentTheme', 'light');//Saving it to local storage
+    }
   };
 
+  //Sticky Navigation
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50); // Adjust threshold as needed
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  }
+
+
   return (
-    <nav className={`border-b shadow-sm ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Left Section - Logo and Navigation Links */}
-          <div className="flex items-center space-x-8">
-            {/* Logo */}
-            <div className="flex items-center">
-              <div className={`w-6 h-6 ${isDarkMode ? "text-white" : "text-black"}`}>
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
-                  <line x1="16" y1="8" x2="2" y2="22" stroke="currentColor" strokeWidth="2" />
-                  <line x1="17.5" y1="15" x2="9" y2="15" stroke="currentColor" strokeWidth="2" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Navigation Links (desktop only) */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`text-base font-medium transition-colors duration-200 ${
-                    isDarkMode 
-                      ? "text-gray-300 hover:text-white" 
-                      : "text-gray-900 hover:text-gray-600"
-                  }`}
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Right Section */}
+    <>
+      <Sidebar />
+      <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-amber-600 shadow" : "bg-amber-600 shadow"} dark:bg-gray-800`}>
+        <nav className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3 text-gray-800 dark:text-white">
+          
+          {/* Left: Logo + Hamburger */}
           <div className="flex items-center space-x-4">
-            {/* User Profile Icon */}
-            <button className={`p-2 rounded-full transition-colors duration-200 ${
-              isDarkMode 
-                ? "text-gray-300 hover:text-white hover:bg-gray-700" 
-                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-            }`}>
-              <FaUser className="w-4 h-4" />
-            </button>
-
-            {/* Theme Toggle */}
             <button
-              onClick={toggleDarkMode}
-              className={`flex items-center rounded-full p-1 w-12 h-6 relative transition-all duration-300 ${
-                isDarkMode ? "bg-gray-600" : "bg-yellow-100"
-              }`}
+              onClick={toggleSidebar}
+              className="text-gray-800 dark:text-white"
+              aria-label="Toggle Sidebar"
             >
-              <div
-                className={`absolute w-5 h-5 bg-white rounded-full shadow-md transform transition-all duration-300 flex items-center justify-center ${
-                  isDarkMode ? "translate-x-6" : "translate-x-0"
-                }`}
-              >
-                {isDarkMode ? <FaMoon className="w-3 h-3 text-gray-800" /> : <FaSun className="w-3 h-3 text-yellow-600" />}
-              </div>
-              <FaSun className="absolute left-1 w-3 h-3 opacity-0" />
-              <FaMoon className="absolute right-1 w-3 h-3 opacity-30 text-gray-400" />
+              <FaBars className="h-6 w-6" />
             </button>
-
-            {/* Login Button */}
-            <Link
-              to="/login"
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-200 text-sm font-medium"
-            >
-              LOGIN
+            <Link to="/" className="font-bold text-lg md:text-2xl">
+              MyBlog
             </Link>
+          </div>
 
-            {/* Hamburger Menu (always visible) */}
+          {/* Right: Auth Links + Theme Toggle */}
+          <div className="flex items-center space-x-4">
+            {isLoggedIn ? (
+              <>
+                <Link to="/dashboard" className="text-gray-600 dark:text-gray-200 hover:text-blue-500">
+                  <FaUserCircle className="w-6 h-6" />
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="text-sm text-white bg-red-500 px-3 py-1 rounded hover:bg-red-600"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="text-gray-600 dark:text-gray-200 hover:text-blue-500"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                >
+                  Sign Up
+                </Link>
+              </>
+            )}
+
             <button
-              onClick={onHamburgerClick}
-              className={`p-2 rounded-full transition-colors duration-200 ${
-                isDarkMode 
-                  ? "text-gray-300 hover:text-white hover:bg-gray-700" 
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-              }`}
-              aria-label="Toggle menu"
+              onClick={toggleTheme}
+              className="px-3 py-1 rounded bg-none text-sm"
             >
-              <FaBars className="w-5 h-5" />
+              {darkMode ? (
+                <FaRegSun className="hover:text-orange-400" />
+              ) : (
+                <FaRegMoon className="hover:text-white" />
+              )}
             </button>
           </div>
-        </div>
-      </div>
-    </nav>
+        </nav>
+      </header>
+    </>
   );
 }

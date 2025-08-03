@@ -1,31 +1,22 @@
-import { useState } from "react"
-import Navbar from "./components/Navbar"
-import Sidebar from "./components/sidebar"
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import { useSidebar } from './context/SidebarContext';
+import { Outlet } from 'react-router-dom';
 
 function App() {
-  const [isSidebarOpen, setSidebarOpen] = useState(false)
-  const [isDarkMode, setDarkMode] = useState(false)
-
-  const toggleSidebar = () => setSidebarOpen(!isSidebarOpen)
-  const closeSidebar = () => setSidebarOpen(false)
-  const toggleDarkMode = () => setDarkMode(!isDarkMode)
+  const { isSidebarOpen } = useSidebar();
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}>
-      <Navbar
-        onHamburgerClick={toggleSidebar}
-        isDarkMode={isDarkMode}
-        toggleDarkMode={toggleDarkMode}
-        isSidebarOpen={isSidebarOpen}
-      />
-      <Sidebar
-        isOpen={isSidebarOpen}
-        onClose={closeSidebar}
-        isDarkMode={isDarkMode}
-        onToggleDarkMode={toggleDarkMode}
-      />
+    <div className='flex'>
+      <Sidebar />
+      <div className="flex-1 min-h-screen">
+        <Navbar />
+        <main className="p-4">
+          <Outlet />
+        </main>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
