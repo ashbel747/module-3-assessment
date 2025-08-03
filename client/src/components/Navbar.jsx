@@ -39,28 +39,11 @@ export default function Navbar() {
     }
   };
 
-  //Sticky Navigation
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50); // Adjust threshold as needed
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  }
-
 
   return (
     <>
       <Sidebar />
-      <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-amber-600 shadow" : "bg-amber-600 shadow"} dark:bg-gray-800`}>
+      <header className='sticky top-0 z-50 bg-amber-600'>
         <nav className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3 text-gray-800 dark:text-white">
           
           {/* Left: Logo + Hamburger */}
