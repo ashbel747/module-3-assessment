@@ -5,6 +5,8 @@ import SignUp from './pages/Signup';
 import BlogFeed from './pages/BlogFeed';
 import Accessibility from './components/Accesibility-section';
 import { useSidebar } from './context/SidebarContext';
+import Signup from './pages/Signup';
+import BlogFeed from './pages/BlogFeed';
 import { Outlet } from 'react-router-dom';
 
 function App() {
@@ -15,7 +17,7 @@ function App() {
       <Sidebar />
       <div className="flex-1 min-h-screen">
         <Navbar />
-        <main className="p-4">
+        <main>
           <Outlet />
           <Hero />
           <SignUp />

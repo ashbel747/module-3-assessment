@@ -6,7 +6,7 @@ export default function Hero() {
   
   return (
     <section
-        className="w-screen h-screen scroll-mt-40 overflow-hidden"
+        className="w-screen h-screen scroll-mt-40 overflow-hidden bg-white dark:bg-gray-800"
     >
         <div className="flex items-center justify-center">
             <div className="w-80 h-80">
