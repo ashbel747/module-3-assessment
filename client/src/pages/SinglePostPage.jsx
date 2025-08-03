@@ -13,7 +13,7 @@ export default function PostPage() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await fetch(`/api/posts/${id}`);
+        const res = await fetch(`https://module-3-assessment.onrender.com/api/posts/${id}`);
         if (!res.ok) throw new Error('Failed to fetch post');
         const data = await res.json();
         setPost(data);
@@ -32,7 +32,7 @@ export default function PostPage() {
     if (!commentText.trim()) return;
 
     try {
-      const res = await fetch(`/api/posts/${id}/comments`, {
+      const res = await fetch(`https://module-3-assessment.onrender.com/api/posts/${id}/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

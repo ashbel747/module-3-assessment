@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       console.log("Trying to log in with:", email, password);
-      const res = await fetch('http://localhost:3500/api/auth/login', {
+      const res = await fetch('https://module-3-assessment.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

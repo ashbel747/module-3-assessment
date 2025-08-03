@@ -8,7 +8,7 @@ const BlogFeed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch(`http://localhost:3500/api/posts?page=${page}&limit=10`);
+        const res = await fetch(`https://module-3-assessment.onrender.com/api/posts?page=${page}&limit=10`);
         if (!res.ok) throw new Error('Failed to fetch posts');
         const data = await res.json();
         setPosts(data);

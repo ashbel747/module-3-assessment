@@ -13,7 +13,7 @@ export default function MyPosts() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch('http://localhost:3500/api/posts/mine', {
+        const res = await fetch('https://module-3-assessment.onrender.com/api/posts/mine', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -37,7 +37,7 @@ export default function MyPosts() {
     if (!window.confirm('Are you sure you want to delete this post?')) return;
 
     try {
-      const res = await fetch(`http://localhost:3500/api/posts/${postId}`, {
+      const res = await fetch(`https://module-3-assessment.onrender.com/api/posts/${postId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
