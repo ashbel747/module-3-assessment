@@ -72,8 +72,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-800">
-      <div className="bg-white dark:bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 w-full max-w-4xl">
+    <div className="min-h-screen w-screen flex items-center justify-center bg-white dark:bg-gray-900 m-9">
+      <div className="bg-gray-100 dark:bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 w-full max-w-4xl">
         <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-white">
           Create Your Account
         </h2>
@@ -87,7 +87,7 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              className="border-none rounded w-full py-2 px-3 text-gray-600 dark:text-gray-100 bg-gray-200 dark:bg-gray-50"
+              className="border-none rounded w-full py-2 px-3 text-gray-600 bg-gray-200 dark:bg-gray-50"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -102,7 +102,7 @@ const Signup = () => {
             </label>
             <input
               type="email"
-              className="border-none rounded w-full py-2 px-3 text-gray-600 dark:text-gray-100 bg-gray-200 dark:bg-gray-50"
+              className="border-none rounded w-full py-2 px-3 text-gray-600 bg-gray-200 dark:bg-gray-50"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -117,7 +117,7 @@ const Signup = () => {
             </label>
             <input
               type="password"
-              className="border-none rounded w-full py-2 px-3 text-gray-600 dark:text-gray-100 bg-gray-200 dark:bg-gray-50"
+              className="border-none rounded w-full py-2 px-3 text-gray-600 bg-gray-200 dark:bg-gray-50"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
