@@ -8,10 +8,13 @@ const BlogFeed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch('http://localhost:3500/api/posts?page=1&limit=10');
+        const res = await fetch(`http://localhost:3500/api/posts?page=${page}&limit=10`);
         if (!res.ok) throw new Error('Failed to fetch posts');
         const data = await res.json();
         setPosts(data);
+        if (data.length === 0 && page > 1) {
+        setPage(p => p - 1); // fallback if user clicks "Next" beyond available posts
+        }
       } catch (err) {
         console.error(err.message);
       }
