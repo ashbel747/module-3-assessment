@@ -119,6 +119,72 @@ const getPosts = async (req, res) => {
   }
 };
 
+// @desc    Get a single post by ID (with author and comments)
+// @route   GET /api/posts/:id
+// @access  Public
+const getPostById = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ message: 'Invalid post ID' });
+  }
+
+  try {
+    const post = await Post.findByIdAndUpdate(
+      id,
+      { $inc: { views: 1 } }, // Increment views
+      { new: true }
+    )
+      .populate('author', 'username avatar')
+      .populate('comments.user', 'username avatar');
+
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    res.status(200).json(post);
+  } catch (err) {
+    console.error('GET POST BY ID ERROR:', err);
+    res.status(500).json({ message: 'Failed to fetch post' });
+  }
+};
+
+// @desc    Add a comment to a post
+// @route   POST /api/posts/:id/comments
+// @access  Private
+const addCommentToPost = async (req, res) => {
+  const { id } = req.params;
+  const { text } = req.body;
+
+  if (!text || text.trim() === '') {
+    return res.status(400).json({ message: 'Comment text is required' });
+  }
+
+  try {
+    const post = await Post.findById(id);
+    if (!post) return res.status(404).json({ message: 'Post not found' });
+
+    const newComment = {
+      user: req.user.id,
+      text,
+    };
+
+    post.comments.unshift(newComment); // add newest comment first
+    await post.save();
+
+    const updatedPost = await Post.findById(id)
+      .populate('author', 'username avatar')
+      .populate('comments.user', 'username avatar');
+
+    res.status(201).json(updatedPost);
+  } catch (err) {
+    console.error('ADD COMMENT ERROR:', err);
+    res.status(500).json({ message: 'Failed to add comment' });
+  }
+};
+
+
+
 // @desc    Get posts of currently logged-in user
 // @route   GET /api/posts/mine
 // @access  Private
@@ -139,5 +205,7 @@ module.exports = {
   updatePost,
   deletePost,
   getPosts,
-  getMyPosts
+  getMyPosts,
+  getPostById,
+  addCommentToPost,
 };
