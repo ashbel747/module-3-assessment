@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import ResetPassword from "./pages/ResetPassword";
 import BlogFeed from "./pages/BlogFeed";
 import MyPosts from './pages/MyPosts';
+import SinglePostPage from './pages/SinglePostPage';
 import PostForm from './components/PostForm';
 import { AuthProvider } from "./context/AuthContext";
 import './index.css';
@@ -21,6 +22,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/login" element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/posts/:id" element={<SinglePostPage />} />
+          <Route path="/dashboard/posts/:id" element={<SinglePostPage />} />
 
           {/* Dashboard (Protected) routes */}
           <Route path="/dashboard/my-posts" element={<MyPosts />} />
