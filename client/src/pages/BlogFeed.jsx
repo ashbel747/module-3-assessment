@@ -24,7 +24,8 @@ const BlogFeed = () => {
   }, [page]);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 bg-gray-100 dark:bg-gray-800">
+    <div className="max-w-6xl mx-auto py-8 bg-white dark:bg-gray-800">
+      <h2 className='font-bold text-2xl m-6'>EXPLORE OUR FEED</h2>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
         {posts.map(post => (
           <PostCard key={post._id} post={post} />
