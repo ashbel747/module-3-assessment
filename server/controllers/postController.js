@@ -119,9 +119,25 @@ const getPosts = async (req, res) => {
   }
 };
 
+// @desc    Get posts of currently logged-in user
+// @route   GET /api/posts/mine
+// @access  Private
+const getMyPosts = async (req, res) => {
+  try {
+    const userId = req.user.id; // set by protect middleware
+    const posts = await Post.find({ author: userId }).populate('author', 'username');
+    res.status(200).json(posts);
+  } catch (err) {
+    console.error('GET MY POSTS ERROR:', err);
+    res.status(500).json({ message: 'Failed to fetch your posts' });
+  }
+};
+
+
 module.exports = {
   createPost,
   updatePost,
   deletePost,
-  getPosts
+  getPosts,
+  getMyPosts
 };
