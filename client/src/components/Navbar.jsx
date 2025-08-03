@@ -44,7 +44,7 @@ export default function Navbar() {
   return (
     <>
       <Sidebar />
-      <header className='sticky top-0 z-50 bg-amber-600'>
+      <header className='sticky top-0 z-50 bg-white dark:bg-gray-900'>
         <nav className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3 text-gray-800 dark:text-white">
           
           {/* Left side: Logo + Navigation Links */}
