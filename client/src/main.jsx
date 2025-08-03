@@ -12,6 +12,7 @@ import BlogFeed from "./pages/BlogFeed";
 import MyPosts from './pages/MyPosts';
 import SinglePostPage from './pages/SinglePostPage';
 import PostForm from './components/PostForm';
+import ChatbotPage from './pages/ChatbotPage'; // Add this import
 import { AuthProvider } from "./context/AuthContext";
 import { SidebarProvider } from './context/SidebarContext';
 import './index.css';
@@ -29,8 +30,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/signup" element={<Signup />} />
             <Route path="/posts/:id" element={<SinglePostPage />} />
             <Route path="/dashboard/posts/:id" element={<SinglePostPage />} />
-
-
+            <Route path="/chatbot" element={<ChatbotPage />} /> {/* Add this route */}
             <Route
               path="/dashboard"
               element={
@@ -71,11 +71,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 </ProtectedRoute>
               }
             />
-
-
           </Routes>
         </Router>
       </SidebarProvider>
-    </AuthProvider>   
+    </AuthProvider> 
   </React.StrictMode>
 );

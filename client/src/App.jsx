@@ -4,6 +4,7 @@ import Hero from './components/Hero-section';
 import SignUp from './pages/Signup';
 import BlogFeed from './pages/BlogFeed';
 import Accessibility from './components/Accesibility-section';
+import ChatbotButton from './components/ChatbotButton';
 import { useSidebar } from './context/SidebarContext';
 import { Outlet } from 'react-router-dom';
 
@@ -23,6 +24,7 @@ function App() {
           <Accessibility />
         </main>
       </div>
+      <ChatbotButton />
     </div>
   );
 }

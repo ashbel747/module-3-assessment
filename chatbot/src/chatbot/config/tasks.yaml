@@ -1,0 +1,52 @@
+topic_research_task:
+  description: >
+    Research the latest trends in social blogging, focusing on "{blog_topic}".
+    Use the TrendHunterAgent to gather insights and data from the RAG system.
+    The output should be a comprehensive topic brief that includes key points,
+    target audience, and potential keywords for SEO.
+  expected_output: >
+    A detailed topic brief in JSON format, including the blog title, key points,
+    target audience, and potential keywords. The brief should be ready for drafting
+    a full-length blog post.
+  agent: trend_hunter
+
+blog_drafting_task:
+  description: >
+    Draft a full-length blog post based on the topic brief provided by the
+    TrendHunterAgent. The post should be engaging, informative, and tailored to
+    the target audience identified in the brief.
+    Use the WriterAgent to ensure the content is well-structured and adheres to
+    the platform's guidelines for "{platform_guidelines}".
+  expected_output: >
+    A complete blog post draft in Markdown format, ready for review and editing.
+    The draft should include headings, subheadings, and any necessary links or
+    references to external sources.
+  agent: writer_agent
+
+content_editing_task:
+  description: >
+    Review and edit the blog post draft created by the WriterAgent. The EditorAgent
+    should focus on improving clarity, coherence, and adherence to the platform's
+    editorial standards. The final output should be a polished version of the blog post.
+    Ensure that the content is optimized for readability and engagement.
+  expected_output: >
+    A refined blog post in Markdown format, incorporating all necessary edits and
+    suggestions from the EditorAgent. The post should be ready for final review and
+    publication.
+  agent: editor_agent
+
+metadata_generation_task:
+  description: >
+    Generate metadata for the blog post, including a summary, meta-description,
+    and social media posts for different platforms (e.g., Facebook, Twitter, LinkedIn).
+    Use the SummarizingAgent to create a concise summary and meta-description.
+    The social media posts should be tailored to each platform's audience and
+    include relevant hashtags.
+  expected_output: >
+    A JSON object containing the following fields:
+    - summary: A brief summary of the blog post.
+    - meta_description: A concise meta-description for SEO.
+    - social_media_posts: An array of social media posts for different platforms,
+      each with platform-specific content and hashtags.
+  agent: summarizing_agent
+  output_file: blog_post_metadata.json
