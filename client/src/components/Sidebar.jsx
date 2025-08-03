@@ -47,7 +47,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={`fixed top-0 left-0 h-full w-64 bg-blue-600 text-white z-50 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 flex flex-col`}>
+    <div className={`fixed top-0 left-0 h-full w-64 bg-blue-600 dark:bg-gray-800 text-white z-50 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 flex flex-col`}>
       {/* Sidebar header */}
       <div className="p-4 flex justify-between items-center border-b border-blue-500">
         <span className="text-xl font-bold">Menu</span>

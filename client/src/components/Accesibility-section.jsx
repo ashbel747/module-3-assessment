@@ -18,10 +18,10 @@ export default function Accessibility() {
         </div>   
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 mt-4">
             <div>
-                <p className="text-gray-900 dark:text-white text-md text-left"> 
+                <p className="text-gray-900 dark:text-white text-xl text-left py-6"> 
                     Designing with accessibility in mind is more than a moral<br/> imperative; it's a strategic advantage. When we build digital<br/> experiences that accommodate diverse needs, we unlock<br/> usability for everyone, not just those with permanent<br/> disabilities. Consider users navigating with screen readers,<br/> individuals with low vision, or someone using a mobile<br/> device in bright sunlight. Accessibility features like proper<br/> heading hierarchy, alt text, and sufficient color contrast<br/> benefit all these users. Inclusive design isn't a niche<br/> concern; it's foundational to good UX.
                 </p>
-                <p className="text-gray-900 dark:text-white text-md text-left">
+                <p className="text-gray-900 dark:text-white text-xl text-left">
                     Ultimately, accessible design is  human centered design. It<br/> challenges us to think beyond edge cases and embrace the full<br/> spectrum of user needs. By designing for inclusion, we create<br/> products that are more resilient, adaptable, and future proof.<br/> Accessibility isn't just about doing<br/> the right thing; it's about doing things right. And when we get<br/> it right, we build digital spaces where everyone belongs.
                 </p>
             </div>

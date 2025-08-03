@@ -24,7 +24,7 @@ const BlogFeed = () => {
   }, [page]);
 
   return (
-    <div className="max-w-6xl mx-auto bg-white dark:bg-gray-800 py-16">
+    <div className="max-w-6xl mx-auto bg-white dark:bg-gray-900 py-16">
       <h2 className='font-bold text-3xl m-20'>EXPLORE OUR FEED</h2>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
         {posts.map(post => (

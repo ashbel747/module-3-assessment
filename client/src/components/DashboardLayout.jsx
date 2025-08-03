@@ -13,7 +13,7 @@ const DashboardLayout = ({ children }) => {
 
       <div className="flex-1">
         <Navbar />
-        <main className="w-screen h-screen bg-white dark:bg-gray-800">{children}</main>
+        <main className="w-screen h-screen">{children}</main>
       </div>
     </div>
   );
