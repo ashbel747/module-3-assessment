@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Navbar from "./components/Navbar"
 import Sidebar from "./components/sidebar"
+import ChatbotButton from "./components/ChatbotButton"
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false)
@@ -24,6 +25,7 @@ function App() {
         isDarkMode={isDarkMode}
         onToggleDarkMode={toggleDarkMode}
       />
+      <ChatbotButton />
     </div>
   )
 }

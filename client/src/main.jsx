@@ -8,6 +8,7 @@ import ResetPassword from "./pages/ResetPassword";
 import BlogFeed from "./pages/BlogFeed";
 import MyPosts from './pages/MyPosts';
 import PostForm from './components/PostForm';
+import Chatbot from './pages/Chatbot';
 import { AuthProvider } from "./context/AuthContext";
 import './index.css';
 
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/login" element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/chatbot" element={<Chatbot />} />
 
           {/* Dashboard (Protected) routes */}
           <Route path="/dashboard/my-posts" element={<MyPosts />} />
