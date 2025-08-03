@@ -205,5 +205,7 @@ module.exports = {
   updatePost,
   deletePost,
   getPosts,
-  getMyPosts
+  getMyPosts,
+  getPostById,
+  addCommentToPost,
 };
