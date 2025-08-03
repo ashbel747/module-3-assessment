@@ -16,8 +16,12 @@ export default function Hero() {
                 />
             </div>
         </div>   
-    <h1 className="font-extrabold text-4xl text-center">INKSPIRE BLOGGING PLATFORM</h1>
-    <Link to="/login" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-center mt-16">LOGIN</Link>
+        <div className="flex flex-col items-center justify-center w-full">
+            <h1 className="font-extrabold text-4xl text-center">INKSPIRE BLOGGING PLATFORM</h1>
+            <p className="text-xl py-4">A blogging platform where every story finds its space designed <br/> with accessibility at its core, so your voice reaches everyone,<br/> everywhere.</p>
+            <Link to="/login" className=" w-60 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-center m-3">LOGIN</Link>
+            <Link to="/signup" className="w-60 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-center m-3">SIGNUP</Link>
+        </div>
     </section>
 
   );
