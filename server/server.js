@@ -12,9 +12,15 @@ const PORT = process.env.PORT || 3500;
 //db connection
 connectDB();
 
-// Enable CORS for fronatend
+
+const allowedOrigins = [
+  'http://localhost:5173',              // Local dev
+  'https://inkspir.netlify.app/', // Netlify site URL
+];
+
+// Enable CORS for frontend
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: allowedOrigins,
   credentials: true,
 }));
 
