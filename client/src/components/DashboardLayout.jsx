@@ -2,6 +2,7 @@ import Sidebar from './Sidebar';
 import { useAuth } from '../context/AuthContext';
 import { useSidebar } from '../context/SidebarContext';
 import Navbar from './Navbar';
+import ChatbotButton from './ChatbotButton';
 
 const DashboardLayout = ({ children }) => {
 
@@ -13,6 +14,7 @@ const DashboardLayout = ({ children }) => {
 
       <div className="flex-1">
         <Navbar />
+        <ChatbotButton />
         <main className="w-screen h-screen">{children}</main>
       </div>
     </div>

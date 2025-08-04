@@ -25,7 +25,7 @@ const ChatbotPage = () => {
 
   const fetchSuggestions = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/chatbot/suggestions');
+      const response = await fetch('https://social-blogging-app-3z4g.onrender.com/api/chatbot/suggestions');
       const data = await response.json();
       if (data.success) {
         setSuggestions(data.suggestions.slice(0, 3)); // Get first 3 suggestions
@@ -42,7 +42,7 @@ const ChatbotPage = () => {
 
   const sendMessage = async (messageText) => {
     try {
-      const response = await fetch('http://localhost:5000/api/chatbot/chat', {
+      const response = await fetch('https://social-blogging-app-3z4g.onrender.com/api/chatbot/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -157,22 +157,6 @@ const ChatbotPage = () => {
           )}
         </div>
 
-        {/* Suggestions Section */}
-        <div className="mb-6">
-          <p className="text-gray-600 text-sm mb-3">Suggestions on what to ask Our AI</p>
-          <div className="space-y-2">
-            {suggestions.map((suggestion, index) => (
-              <button 
-                key={index}
-                onClick={() => handleSuggestionClick(suggestion)}
-                className="w-full bg-blue-400 hover:bg-blue-500 text-white px-4 py-2 rounded-full text-sm text-left transition-colors"
-              >
-                {suggestion}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Input Section */}
         <div className="mb-6">
           <form onSubmit={handleSendMessage} className="relative">
@@ -181,7 +165,7 @@ const ChatbotPage = () => {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Ask me anything about your projects..."
-              className="w-full bg-white border border-gray-200 rounded-full px-4 py-3 pr-12 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm"
+              className="w-full bg-white border dark:text-black text-black border-gray-200 rounded-full px-4 py-3 pr-12 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm"
               disabled={isTyping}
             />
             <button 
