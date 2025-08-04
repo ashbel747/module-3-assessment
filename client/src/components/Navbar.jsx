@@ -48,8 +48,8 @@ export default function Navbar() {
   return (
     <>
       <Sidebar />
-      <header className='sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md'>
-        <nav className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3 text-gray-800 dark:text-white">
+      <header className='fixed top-0 z-50 bg-white dark:bg-gray-900 shadow-md h-16 w-full'>
+        <nav className="max-w-7xl mx-auto h-full flex justify-between items-center px-4 py-3 text-gray-800 dark:text-white">
           
           {/* Left side: Logo + Navigation Links */}
           <div className="flex items-center space-x-8">

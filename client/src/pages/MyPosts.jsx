@@ -70,6 +70,7 @@ export default function MyPosts() {
         <p className='text-center text-gray-800 text-3xl'>You Have No Posts Yet!</p>
       ) : (
         <>
+          <div className='block'><h1 className='text-gray-800 dark:text-white text-4xl text-center font-extrabold pb-8'>My Posts</h1></div>
           <div className='flex space-x-52 items-center my-3'>
             <h2 className='ml-16 underline text-2xl'>
               TITLE
@@ -80,9 +81,9 @@ export default function MyPosts() {
           </div>
 
           {posts.map((post) => (
-            <div key={post._id} className="bg-white p-4 shadow rounded flex justify-between items-center mb-2">
+            <div key={post._id} className="bg-white dark:bg-gray-800 p-4 shadow rounded flex justify-between items-center mb-2">
               <h2 className=" font-semibold">{post.summary}</h2>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-white">
                 {new Date(post.createdAt).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",

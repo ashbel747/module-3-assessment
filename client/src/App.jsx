@@ -17,7 +17,7 @@ function App() {
       <Sidebar />
       <div className="flex-1 min-h-screen">
         <Navbar />
-        <main>
+        <main className='pt-16'>
           <Outlet />
           <Hero />
           <SignUp />
