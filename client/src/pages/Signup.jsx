@@ -46,7 +46,7 @@ const Signup = () => {
     setFormErrors({});
 
     try {
-      const res = await fetch('http://localhost:3500/api/auth/signup', {
+      const res = await fetch('https://module-3-assessment.onrender.com/api/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
@@ -72,8 +72,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-800">
-      <div className="bg-white dark:bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 w-full max-w-4xl">
+    <div className="min-h-screen w-full flex items-center justify-center bg-white dark:bg-gray-900  px-4 py-6 sm:px-6 md:px-8">
+      <div className="bg-gray-100 dark:bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 w-full sm:max-w-md md:max-w-lg">
         <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-white">
           Create Your Account
         </h2>
@@ -87,7 +87,7 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              className="border-none rounded w-full py-2 px-3 text-gray-600 dark:text-gray-100 bg-gray-200 dark:bg-gray-50"
+              className="border-none rounded w-full py-2 px-3 text-gray-600 bg-gray-200 dark:bg-gray-50"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -102,7 +102,7 @@ const Signup = () => {
             </label>
             <input
               type="email"
-              className="border-none rounded w-full py-2 px-3 text-gray-600 dark:text-gray-100 bg-gray-200 dark:bg-gray-50"
+              className="border-none rounded w-full py-2 px-3 text-gray-600 bg-gray-200 dark:bg-gray-50"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -117,7 +117,7 @@ const Signup = () => {
             </label>
             <input
               type="password"
-              className="border-none rounded w-full py-2 px-3 text-gray-600 dark:text-gray-100 bg-gray-200 dark:bg-gray-50"
+              className="border-none rounded w-full py-2 px-3 text-gray-600 bg-gray-200 dark:bg-gray-50"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

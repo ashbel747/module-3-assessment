@@ -11,7 +11,7 @@ const ResetPassword = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:3500/api/auth/reset-password', {
+      const res = await fetch('https://module-3-assessment.onrender.com/api/auth/reset-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const ResetPassword = () => {
             </label>
             <input
               type="email"
-              className="border-none rounded w-full py-2 px-3 text-gray-600 dark:text-gray-100 bg-gray-200 dark:bg-gray-50"
+              className="border-none rounded w-full py-2 px-3 text-gray-600 bg-gray-200 dark:bg-gray-50"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -58,7 +58,7 @@ const ResetPassword = () => {
             </label>
             <input
               type="password"
-              className="border-none rounded w-full py-2 px-3 text-gray-600 dark:text-gray-100 bg-gray-200 dark:bg-gray-50"
+              className="border-none rounded w-full py-2 px-3 text-gray-600 bg-gray-200 dark:bg-gray-50"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               required

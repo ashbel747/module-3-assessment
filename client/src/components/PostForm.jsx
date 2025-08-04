@@ -10,7 +10,7 @@ export default function PostForm({ isEdit }) {
 
   useEffect(() => {
     if (isEdit && id) {
-      fetch('http://localhost:3500/api/posts')
+      fetch('https://module-3-assessment.onrender.com/api/posts')
         .then((res) => res.json())
         .then((posts) => {
           const post = posts.find((p) => p._id === id);
@@ -34,8 +34,8 @@ export default function PostForm({ isEdit }) {
     e.preventDefault();
     const method = isEdit ? 'PUT' : 'POST';
     const url = isEdit
-      ? `http://localhost:3500/api/posts/${id}`
-      : 'http://localhost:3500/api/posts';
+      ? `https://module-3-assessment.onrender.com/api/posts/${id}`
+      : 'https://module-3-assessment.onrender.com/api/posts';
 
     try {
       const res = await fetch(url, {
